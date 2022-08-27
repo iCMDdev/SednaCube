@@ -1,6 +1,11 @@
 # SednaCube
 SednaCube is Sedna PocketQube Team's data logging device, submitted for the [Qube2Space](https://students.2space.ro/qube2space.html) competition. Source code and schematics are available here.
 
+# Whoami
+[Sedna](https://en.wikipedia.org/wiki/90377_Sedna) is a tiny, little dwarf planet in our Solar System, situated at 1.26×10^10 km away from us. Likewise, SednaCube is a small PocketQube that hopes to be as small as Sedna is for the Solar System, and to work independently as far away as Sedna is situated from us.
+
+Another interesting aspect of Sedna is its orbit. This dwarf's orbital period is 11,408 years ([JPL](https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=Sedna)). That's a lot of years! Similarly, SednaCube can record sensor data for about 5000 hours (more than 200 days!) on a 32GB SD card.
+
 # Description
 SednaCube is a PocketQube designed for a rocket flight up to 9000m. Its mission is to record data such as pressure, temperature, altitude, humidity, orientation and location during a rocket flight that will take place later this year. The data will be then analysed, hoping that we will find interesting information about the flight and environment.
 
