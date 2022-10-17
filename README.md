@@ -1,4 +1,5 @@
 # SednaCube
+<img src="/sednacube-banner.png" alt="SednaCube Banner Image">
 SednaCube is Sedna PocketQube Team's data logging device, submitted for the [Qube2Space](https://students.2space.ro/qube2space.html) competition. Source code and schematics are available here.
 
 # Whoami
