@@ -17,6 +17,7 @@ void setup()
 void loop()
 {
   if(EEPROM.read(a) != 255) {
+    // To ensure a long EEPROM memory life, only locations where data has been written will be erased.
     EEPROM.write(a, 255);
   }
   a = a + 1;
