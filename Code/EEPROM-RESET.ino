@@ -16,7 +16,9 @@ void setup()
 
 void loop()
 {
-  EEPROM.write(a, 255);
+  if(EEPROM.read(a) != 255) {
+    EEPROM.write(a, 255);
+  }
   a = a + 1;
   if (a == 512) {
     float f = 0f;
