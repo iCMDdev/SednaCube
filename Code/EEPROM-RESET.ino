@@ -28,5 +28,6 @@ void loop()
     EEPROM.put(200, f); // maximum altitude init
     EEPROM.put(250, cnt); // maximum altitude count init
     Serial.println("Done! Device's EEPROM was fully reset.");
+    while(1) ; // stop running
   }
 }
