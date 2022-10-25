@@ -54,7 +54,7 @@ void missionOne() {
   // this subroutine is responsible for recording data for SednaCube's first mission
   // as well as detecting if the device was ejected from the rocket (altitude has decreased by at least 1000m from the highest recorded altitude)
   File file;
-  file = SD.open(F("m1.csv"), FILE_WRITE);
+  file = SD.open(F("m1.csv"), O_CREAT | O_APPEND | O_WRITE);
   if (file) {
     file.print(millis()); // time since boot (millis)
     printComma(file);
@@ -93,7 +93,7 @@ void missionOne() {
 void missionTwo() {
   // this subroutine is responsible for recording data for SednaCube's second mission
   File file;
-  file = SD.open(F("m2.csv"), FILE_WRITE);
+  file = SD.open(F("m2.csv"), O_CREAT | O_APPEND | O_WRITE);
   mpu.accelUpdate();
   mpu.gyroUpdate();
   mpu.magUpdate();
