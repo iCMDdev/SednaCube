@@ -160,20 +160,48 @@ void setup() {
 
   // Check if eject mode was enabled or not
   // by reading the EEPROM byte at address 100
-  if(EEPROM.read(100)==255) {
+  pinMode(LED_BUILTIN, OUTPUT);
+  if(EEPROM.read(50)==255) {
+    delay(1000);
+    // If value is 255, nothing has been written to EEPROM. We're in the first boot (just when program was uploaded)
+    
+    // Serial.println("Program uploaded. Waiting for reboot.");
+    
+    EEPROM.write(50, 1); // Remember the first boot.
+    
+    while(true) {
+      // WAITING FOR NEXT BOOT.
+      // Blink LED: 1s ON, 0.5 OFF
+      digitalWrite(LED_BUILTIN, HIGH);
+      delay(100);
+      digitalWrite(LED_BUILTIN, LOW);
+      delay(500);
+    }
+  } else if(EEPROM.read(100)==255) {
+    delay(5000);
     // If value is 255, nothing has been written to EEPROM. Entering first-time setup.
 
     // Serial.println("Entering first-time setup");
 
-    // This means it is the first time the PocketQube has started after "factory" or EEPROM ERASE (full reset),
+    // This means it is the first time the PocketQube has started after "factory reset" or EEPROM ERASE (full reset),
     // So this is when the eject mode's switch check should e performed.
     pinMode(8, INPUT_PULLUP);
     delay(300);
 
     ejectEnabled = (digitalRead(8) == 0);
     EEPROM.write(100, ejectEnabled); // read switch state and write it into EEPROM
+    
+    while(true) {
+      // WAITING FOR NEXT BOOT.
+      // Blink LED: 0.1s ON, 0.5 OFF
+      digitalWrite(LED_BUILTIN, HIGH);
+      delay(2000);
+      digitalWrite(LED_BUILTIN, LOW);
+      delay(500);
+    }
+    
   } else {
-    // The device lost power / was rebooted. Do NOT perform a switch read, as it's position
+    // The device is in the rocket, and setup was completed during a previous boot. Do NOT perform a switch read, as it's position
     // might've accidentally changed during the flight. Instead, read the data saved in EEPROM
     // Serial.println("Device was rebooted. Reading EEPROM");
     ejectEnabled = (EEPROM.read(100)==1);
@@ -202,6 +230,8 @@ void ledBlink() {
   // Blink the blue LED at a rate specific to the program's current state
   
   // ---------------- Program states indicated by LED blinks: ---------------
+  // - Program uploaded, waiting for next boot:          ON: 0.1s, OFF: 0.5s
+  // - Switch position saved, waiting for next boot:     ON:   2s, OFF:   1s
   // - Eject enabled & Device was ejected from rocket:   ON: 0.5s, OFF: 0.5s
   // - Eject enabled & Device was not ejected yet:       ON:   1s, OFF:   1s
   // - Eject disabled:                                   ON:   2s, OFF:   2s
@@ -210,15 +240,15 @@ void ledBlink() {
   if(ejected && ejectEnabled && millis()-lastLEDblink>=500) {
     lastLEDblink = millis();
     ledOn = !ledOn;
-    digitalWrite(9, ledOn);
+    digitalWrite(LED_BUILTIN, ledOn);
   } else if(ejectEnabled && millis()-lastLEDblink>=1000) {
     lastLEDblink = millis();
     ledOn = !ledOn;
-    digitalWrite(9, ledOn);
+    digitalWrite(LED_BUILTIN, ledOn);
   } else if (!ejectEnabled && millis()-lastLEDblink>=2000) {
     lastLEDblink = millis();
     ledOn = !ledOn;
-    digitalWrite(9, ledOn);
+    digitalWrite(LED_BUILTIN, ledOn);
   }
 }
 
