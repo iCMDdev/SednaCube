@@ -9,7 +9,7 @@ SednaCube is Sedna PocketQube Team's data logging device, submitted for the [Qub
 Another interesting aspect of Sedna is its orbit. This dwarf's orbital period is 11,408 years ([JPL](https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=Sedna)). That's a lot of years! Similarly, SednaCube can record sensor data for about 5000 hours (more than 200 days!) on a 32GB SD card.
 
 # Description
-SednaCube is a PocketQube designed for a rocket flight up to 9000m. Its mission is to record data such as pressure, temperature, altitude, humidity, orientation and location during a rocket flight that will take place later this year. The data will be then analysed, hoping that we will find interesting information about the flight and environment.
+SednaCube is a PocketQube designed for a rocket flight up to 9000m. Its mission is to record data such as pressure, temperature, altitude, humidity, orientation and location during a rocket flight that will take place next year. The data will be then analysed, hoping that we will find interesting information about the flight and environment.
 
 <i>Used hardware: Arduino Nano, GY-91 (BMP280 & MPU9250), DHT11, SIM800L, GY-NEO6MV2.</i>
 
